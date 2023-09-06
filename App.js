@@ -5,7 +5,9 @@ import  HomeScreen  from "./screens/Home"
 import  IniciarScreen  from "./screens/Iniciar"
 import Login from "./screens/Login"
 import CadUsuario from "./screens/CadastroUsuario"
-
+import Contatos from './screens/Contatos';
+import AltContato from './screens/AlteracaoExclusaoContatos';
+import CadContato from './screens/CadastroContato';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +19,10 @@ function App() {
         <Stack.Screen name="Home1" component={IniciarScreen} />
         <Stack.Screen name="Login" component={Login}options={ {headerShown: false} } />
         <Stack.Screen name="CadUsuario" component={CadUsuario}options={ {headerShown: false} } />
-      </Stack.Navigator>
+        <Stack.Screen name="Contatos" component={Contatos}options={ {headerShown: false} } />
+        <Stack.Screen name="AltContato" component={AltContato}options={{headerShown: false}}/>
+        <Stack.Screen name="CadContato" component={CadContato}options={{headerShown: false}}/>
+        </Stack.Navigator>
     </NavigationContainer>
   );
 }

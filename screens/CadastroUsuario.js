@@ -1,21 +1,42 @@
 import * as React from 'react';
 import { View } from 'react-native';
-import {Icon,Text,Button,Input,leftComponent,centerComponent,rightComponent} from 'react-native-elements';
+import {Text,Button,Input,Header,Icon }from 'react-native-elements';
 
 
 function  CadUsuario({ navigation }) {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Header
-        leftComponent={{ icon: 'menu', color: '#fff', iconStyle: { color: '#fff' } }}
-        centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-        rightComponent={{ icon: 'home', color: '#fff' }}
-            />
+        <>
+        <View style={{ flex: 1, alignItems: 'center' }}>
+    
+    
 
-
-
-
-    <Text>login</Text>
+    <Header  
+        placement="center"                
+        leftComponent={  
+            <Icon
+            raised    
+            name='chevron-back-circle'
+            type='ionicon'
+            color='#1E90FF'
+            onPress={() => navigation.navigate('Login')} /> }
+        centerComponent={{ text: 'Usuário', style: { fontSize: '25' ,color: '#fff'} }}
+       
+        
+        
+    />  
+     
+        
+    <Text>nome</Text>
+    <Input 
+        containerStyle={{
+            marginVertical: 15,
+        }} />
+    <Text>cpf</Text>
+    <Input 
+        containerStyle={{
+            marginVertical: 15,
+        }} />  
+    <Text>email</Text>
     <Input 
         containerStyle={{
             marginVertical: 15,
@@ -25,43 +46,25 @@ function  CadUsuario({ navigation }) {
         containerStyle={{
             marginVertical: 15,
         }} />
-    <Button
-        title="Login"
-        onPress={() => navigation.navigate('Contatos')}
-        loading={false}
-        loadingProps={{ size: 'small', color: 'white' }}
+   <Button
+        title= " Salvar                      "
+        onPress={() => navigation.navigate('')}
         buttonStyle={{
-            backgroundColor: 'blue',
+            backgroundColor: '#1E90FF',
             borderRadius: 5,
         }}
-        titleStyle={{ fontWeight: 'bold', fontSize: 23 }}
+        titleStyle={{ fontWeight: 'bold', fontSize: 20 }}
         containerStyle={{
             marginHorizontal: 75,
             height: 50,
             marginVertical: 15,
         }}
-
-        
-       
+     
     />
-    <Button
-        title="Cadastre-se"
-        onPress={() => navigation.navigate('CadastroUsuario')}
-        loading={false}
-        loadingProps={{ size: 'small', color: 'white' }}
-        buttonStyle={{
-            backgroundColor: 'red',
-            borderRadius: 5,
-        }}
-        titleStyle={{ fontWeight: 'bold', fontSize: 23 }}
-        containerStyle={{
-            marginHorizontal: 75,
-            height: 50,
-            marginVertical: 10,
-        }}
-        
-    />
+   
+    
         </View>
+        </>
     );
 }
 

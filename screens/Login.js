@@ -10,9 +10,10 @@ function  Login({ navigation }) {
 <Icon
         name='user'
         type='evilicon'
-        size={150}
-        color='#517fa4' />
-    <Text>login</Text>
+        size={190}
+        alignItems='right' />
+    <Text>login
+    </Text>
     <Input 
         containerStyle={{
             marginVertical: 15,
@@ -22,35 +23,30 @@ function  Login({ navigation }) {
         containerStyle={{
             marginVertical: 15,
         }} />
+       
     <Button
-        title="Login"
+        title= " Login                        "
         onPress={() => navigation.navigate('Contatos')}
-        loading={false}
-        loadingProps={{ size: 'small', color: 'white' }}
         buttonStyle={{
-            backgroundColor: 'blue',
+            backgroundColor: '#1E90FF',
             borderRadius: 5,
         }}
-        titleStyle={{ fontWeight: 'bold', fontSize: 23 }}
+        titleStyle={{ fontWeight: 'bold', fontSize: 20 }}
         containerStyle={{
             marginHorizontal: 75,
             height: 50,
             marginVertical: 15,
         }}
-
-
-       
+     
     />
     <Button
-        title="Cadastre-se"
+        title="  Cadastre-se       "
         onPress={() => navigation.navigate('CadUsuario')}
-        loading={false}
-        loadingProps={{ size: 'small', color: 'white' }}
         buttonStyle={{
-            backgroundColor: 'red',
+            backgroundColor: '#FF0000',
             borderRadius: 5,
         }}
-        titleStyle={{ fontWeight: 'bold', fontSize: 23 }}
+        titleStyle={{ fontWeight: 'bold', fontSize: 20 }}
         containerStyle={{
             marginHorizontal: 75,
             height: 50,
