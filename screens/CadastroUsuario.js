@@ -6,7 +6,7 @@ import {Text,Button,Input,Header,Icon }from 'react-native-elements';
 function  CadUsuario({ navigation }) {
     return (
         <>
-        <View style={{ flex: 1, alignItems: 'center' }}>
+        <View style={{ flex: 1 }}>
     
     
 
@@ -19,12 +19,11 @@ function  CadUsuario({ navigation }) {
             type='ionicon'
             color='#1E90FF'
             onPress={() => navigation.navigate('Login')} /> }
-        centerComponent={{ text: 'Usuário', style: { fontSize: '25' ,color: '#fff'} }}
+        centerComponent={{ text: 'Usuário', style: { fontSize: 50 ,color: '#fff'} }}
        
-        
-        
+            
     />  
-     
+     <View style={{ flex: 1 , alignItems: 'center', justifyContent: 'center' }}>
         
     <Text>nome</Text>
     <Input 
@@ -46,8 +45,10 @@ function  CadUsuario({ navigation }) {
         containerStyle={{
             marginVertical: 15,
         }} />
+
+</View>
    <Button
-        title= " Salvar                      "
+        title= "Salvar"
         onPress={() => navigation.navigate('')}
         buttonStyle={{
             backgroundColor: '#1E90FF',

@@ -5,7 +5,7 @@ import {Text,Button,Input,Header,Icon }from 'react-native-elements';
 
 function  AltContato({ navigation }) {
     return (
-        <View style={{ flex: 1, alignItems: 'center' }}>
+        <View style={{ flex: 1 }}>
 
     <Header
         placement="center"
@@ -16,9 +16,11 @@ function  AltContato({ navigation }) {
             type='ionicon'
             color='#1E90FF'
             onPress={() => navigation.navigate('Contatos')} /> }
-        centerComponent={{ text: 'Contato', style: { fontSize: '25' ,color: '#fff'} }}
+        centerComponent={{ text: 'Contato', style: { fontSize: 50 ,color: '#fff'} }}
         
     />  
+
+<View style={{ flex: 1 , alignItems: 'center', justifyContent: 'center' }}>
         
     <Text>nome</Text>
     <Input 
@@ -35,10 +37,12 @@ function  AltContato({ navigation }) {
         containerStyle={{
             marginVertical: 15,
         }} />
+
+</View>
    
      
       <Button
-        title= " Alterar                        "
+        title= "Alterar"
         //onPress={() => navigation.navigate('Login')}
         buttonStyle={{
             backgroundColor: '#1E90FF',
@@ -50,10 +54,12 @@ function  AltContato({ navigation }) {
             height: 50,
             marginVertical: 15,
         }}
+
+        
      
     />
     <Button
-        title="  Excluir                      "
+        title="Excluir"
         //onPress={() => navigation.navigate('CadUsuario')}
         buttonStyle={{
             backgroundColor: '#FF0000',

@@ -25,7 +25,7 @@ function  Login({ navigation }) {
         }} />
        
     <Button
-        title= " Login                        "
+        title= "Login"
         onPress={() => navigation.navigate('Contatos')}
         buttonStyle={{
             backgroundColor: '#1E90FF',
@@ -33,14 +33,14 @@ function  Login({ navigation }) {
         }}
         titleStyle={{ fontWeight: 'bold', fontSize: 20 }}
         containerStyle={{
-            marginHorizontal: 75,
-            height: 50,
-            marginVertical: 15,
+            width:300,
+            paddingBottom:10
         }}
      
     />
+
     <Button
-        title="  Cadastre-se       "
+        title="Cadastre-se"
         onPress={() => navigation.navigate('CadUsuario')}
         buttonStyle={{
             backgroundColor: '#FF0000',
@@ -48,9 +48,7 @@ function  Login({ navigation }) {
         }}
         titleStyle={{ fontWeight: 'bold', fontSize: 20 }}
         containerStyle={{
-            marginHorizontal: 75,
-            height: 50,
-            marginVertical: 10,
+            width:300
         }}
         
     />

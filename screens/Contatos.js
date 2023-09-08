@@ -7,17 +7,17 @@ function  Contatos({ navigation }) {
     const list = [
         {
           name: 'Marcos Andrande',
-          avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',         
+          avatar_url: 'https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png',         
           subtitle: '81 988553424'
         },
         {
           name: 'Patrícia Tavares',
-          avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+          avatar_url: 'https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png',
           subtitle: '81 998765332'
         },
         {
             name: 'Rodrigo Antunes',
-            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            avatar_url: 'https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png',
             subtitle: '81 987765525'
           },
        
@@ -28,11 +28,11 @@ function  Contatos({ navigation }) {
     return (
 
         <>
-        <View style={{ alignItems: 'center' }}>
+        <View style={{ }}>
 
     <Header
         placement="center"
-        centerComponent={{ text: 'Lista de Contatos', style: { fontSize: '25' ,color: '#fff'} }}
+        centerComponent={{ text: 'Lista de Contatos', style: { fontSize: 30 ,color: '#fff'} }}
         rightComponent={ 
         <Icon
             raised    
@@ -50,14 +50,14 @@ function  Contatos({ navigation }) {
             
             {
                 list.map((l, i) => (
-                <ListItem key={i} bottomDivider>
+                <ListItem key={i} bottomDivider onPress={() => navigation.navigate('AltContato')}>
                     
                     <Avatar source={{uri: l.avatar_url}} />
                     <ListItem.Content >
                     <ListItem.Title>{l.name}</ListItem.Title>
                     <ListItem.Subtitle>{l.subtitle}</ListItem.Subtitle>
                     </ListItem.Content >
-                    <Button onPress={() => navigation.navigate('AltContato')}/>
+                   
                     
                 </ListItem>
                 ))

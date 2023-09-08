@@ -5,7 +5,9 @@ import {Text,Button,Input,Header,Icon }from 'react-native-elements';
 
 function  CadContato({ navigation }) {
     return (
-        <View style={{ flex: 1, alignItems: 'center' }}>
+
+        <>
+        <View style={{ }}>
 
     <Header
         placement="center"
@@ -16,9 +18,10 @@ function  CadContato({ navigation }) {
             type='ionicon'
             color='#1E90FF'
             onPress={() => navigation.navigate('Contatos')} /> }
-        centerComponent={{ text: 'Contato', style: { fontSize: '25' ,color: '#fff'} }}
+        centerComponent={{ text: 'Contato', style: { fontSize: 50 ,color: '#fff'} }}
         
     />  
+    <View style={{ flex: 1 , alignItems: 'center', justifyContent: 'center' }}>
         
     <Text>nome</Text>
     <Input 
@@ -35,13 +38,17 @@ function  CadContato({ navigation }) {
         containerStyle={{
             marginVertical: 15,
         }} />
+
+</View>
    <Button
-        title= " Salvar                       "
+        title= "Salvar"
         onPress={() => navigation.navigate('Login')}
         buttonStyle={{
             backgroundColor: '#1E90FF',
             borderRadius: 5,
+        
         }}
+        
         titleStyle={{ fontWeight: 'bold', fontSize: 20 }}
         containerStyle={{
             marginHorizontal: 75,
@@ -52,6 +59,7 @@ function  CadContato({ navigation }) {
     />
    
         </View>
+        </>
     );
 }
 
