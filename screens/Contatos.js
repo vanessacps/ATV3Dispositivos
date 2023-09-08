@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState,useEffect } from 'react';
 import { View } from 'react-native';
 import {Button,Header,Icon,Avatar,ListItem} from 'react-native-elements';
 
@@ -8,17 +9,23 @@ function  Contatos({ navigation }) {
         {
           name: 'Marcos Andrande',
           avatar_url: 'https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png',         
-          subtitle: '81 988553424'
+          subtitle: '81 988553424',
+          email : 'MA@gmail.com'
+          
         },
         {
           name: 'Patrícia Tavares',
           avatar_url: 'https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png',
-          subtitle: '81 998765332'
+          subtitle: '81 998765332',
+          email : 'PT@gmail.com'
+        
         },
         {
             name: 'Rodrigo Antunes',
             avatar_url: 'https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png',
-            subtitle: '81 987765525'
+            subtitle: '81 987765525',
+            email : 'RA@gmail.com'
+            
           },
        
       ]
@@ -50,7 +57,13 @@ function  Contatos({ navigation }) {
             
             {
                 list.map((l, i) => (
-                <ListItem key={i} bottomDivider onPress={() => navigation.navigate('AltContato')}>
+                <ListItem key={i} bottomDivider onPress={() => navigation.navigate('AltContato' , {
+                    nome:l.name,
+                    telefone:l.subtitle,
+                    email:l.email
+                    
+                })
+                }>
                     
                     <Avatar source={{uri: l.avatar_url}} />
                     <ListItem.Content >
