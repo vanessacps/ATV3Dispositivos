@@ -2,33 +2,30 @@ import * as React from 'react';
 import { useState,useEffect } from 'react';
 import { View } from 'react-native';
 import {Button,Header,Icon,Avatar,ListItem} from 'react-native-elements';
+import axios from 'axios';
+import { useIsFocused } from '@react-navigation/native';
 
 
 function  Contatos({ navigation }) {
-    const list = [
-        {
-          name: 'Marcos Andrande',
-          avatar_url: 'https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png',         
-          subtitle: '81 988553424',
-          email : 'MA@gmail.com'
-          
-        },
-        {
-          name: 'Patrícia Tavares',
-          avatar_url: 'https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png',
-          subtitle: '81 998765332',
-          email : 'PT@gmail.com'
-        
-        },
-        {
-            name: 'Rodrigo Antunes',
-            avatar_url: 'https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png',
-            subtitle: '81 987765525',
-            email : 'RA@gmail.com'
+    const  [contact,setContato] = useState([])
+    const isFocused = useIsFocused()
+
+      useEffect(() => {
+        consultarDados()
+        function consultarDados(){
+
+            axios.get('http://localhost:3000/contato')
             
-          },
-       
-      ]
+            .then(function (response) {
+            setContato(response.data);
+            }).catch(function (error) {
+            console.log(error);
+            
+            });
+            
+            
+        }
+    }, [isFocused])
 
          
  
@@ -56,10 +53,10 @@ function  Contatos({ navigation }) {
         <View>
             
             {
-                list.map((l, i) => (
+                contact.map((l, i) => (
                 <ListItem key={i} bottomDivider onPress={() => navigation.navigate('AltContato' , {
-                    nome:l.name,
-                    telefone:l.subtitle,
+                    nome:l.nome,
+                    telefone:l.telefone,
                     email:l.email
                     
                 })
@@ -67,8 +64,8 @@ function  Contatos({ navigation }) {
                     
                     <Avatar source={{uri: l.avatar_url}} />
                     <ListItem.Content >
-                    <ListItem.Title>{l.name}</ListItem.Title>
-                    <ListItem.Subtitle>{l.subtitle}</ListItem.Subtitle>
+                    <ListItem.Title>{l.nome}</ListItem.Title>
+                    <ListItem.Subtitle>{l.telefone}</ListItem.Subtitle>
                     </ListItem.Content >
                    
                     

@@ -1,10 +1,42 @@
 import * as React from 'react';
 import { View } from 'react-native';
-import {Text,Button,Input,Header,Icon }from 'react-native-elements';
+import {Text,Button,Input,Header,Icon,ListItem }from 'react-native-elements';
+import { useEffect,useState } from 'react';
+import axios from 'axios';
+
+
 
 
 function  CadContato({ navigation }) {
-    return (
+
+const [getNome,setNome] = useState();
+const [getTelefone,setTelefone] = useState();
+const [getEmail,setEmail] = useState();
+
+
+    function inserirDados(){
+
+        axios.post('http://localhost:3000/contato'
+        , {
+        
+        nome: getNome,
+        telefone: getTelefone,
+        email: getEmail,
+        avatar_url: "https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
+        }).then(function (response) {
+        alert ("Cadastro cadastrado com sucesso")
+        navigation.navigate('Contatos')(response);
+        }).catch(function (error) {
+        console.log(error);
+        
+        });
+        
+        }
+        
+
+
+
+return (
 
         <>
         <View style={{ }}>
@@ -27,22 +59,28 @@ function  CadContato({ navigation }) {
     <Input 
         containerStyle={{
             marginVertical: 15,
-        }} />  
+        }}
+        onChangeText={text => setNome(text)}
+            value={getNome} />  
     <Text>email</Text>
     <Input 
         containerStyle={{
             marginVertical: 15,
-        }} />
+        }} 
+        onChangeText={text => setEmail(text)}
+            value={getEmail}/>
     <Text>Telefone</Text>
     <Input 
         containerStyle={{
             marginVertical: 15,
-        }} />
+        }} 
+        onChangeText={text => setTelefone(text)}
+            value={getTelefone}/>
 
 </View>
    <Button
         title= "Salvar"
-        onPress={() => navigation.navigate('Login')}
+        onPress={() => inserirDados() }
         buttonStyle={{
             backgroundColor: '#1E90FF',
             borderRadius: 5,
