@@ -24,7 +24,7 @@ const [getEmail,setEmail] = useState();
         email: getEmail,
         avatar_url: "https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
         }).then(function (response) {
-        alert ("Cadastro cadastrado com sucesso")
+        alert ("Contato cadastrado com sucesso")
         navigation.navigate('Contatos')(response);
         }).catch(function (error) {
         console.log(error);
