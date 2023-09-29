@@ -4,6 +4,10 @@ import { useState,useEffect } from 'react';
 import {Icon,Text,Button,Input} from 'react-native-elements';
 import axios from 'axios';
 import  {  showMessage ,  hideMessage  } from "react-native-flash-message";
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider,signInWithPopup  } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
 
 
 
@@ -11,14 +15,81 @@ import  {  showMessage ,  hideMessage  } from "react-native-flash-message";
 function  Login({ navigation }) {
 
     
+    
    
-    const [getEmail,setEmail]=useState([])
-    const [getSenha,setSenha]=useState([])
+    const [email,setEmail]=useState([])
+    const [senha,setSenha]=useState([])
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyCrXgC_8G2nAGQXerfjjdoq2tlYNeJCvG8",
+        authDomain: "logindm-3e012.firebaseapp.com",
+        projectId: "logindm-3e012",
+        storageBucket: "logindm-3e012.appspot.com",
+        messagingSenderId: "793524213954",
+        appId: "1:793524213954:web:f105fbb1f411255b30035b",
+        measurementId: "G-RCY0H5G7VT"
+      };
+
+    
+
+
+      const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+
+    const auth = getAuth();
 
     
             function logar(){
 
-                axios.get('http://localhost:3000/usuario?email=' +getEmail + '&senha=' +getSenha)
+                signInWithEmailAndPassword(auth, email , senha)
+                .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                alert("Seja bem vindo");
+                navigation.navigate('Contatos');
+                })
+                .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                message : "Email ou Senha invalido verifique os dados!" 
+               
+                });
+
+
+
+               
+            }
+
+            function logarGoogle(){
+                const provider = new GoogleAuthProvider();
+                signInWithPopup(auth, provider)
+                .then((result) => {
+                    // This gives you a Google Access Token. You can use it to access the Google API.
+                    const credential = GoogleAuthProvider.credentialFromResult(result);
+                    const token = credential.accessToken;
+
+                    // The signed-in user info.
+                    const user = result.user;
+                   
+                    navigation.navigate('Contatos');
+                    // IdP data available using getAdditionalUserInfo(result)
+                    // ...
+                }).catch((error) => {
+                    // Handle Errors here.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    message : "Email ou Senha invalido verifique os dados!" 
+                    // The email of the user's account used.
+                    const email = error.customData.email;
+                    // The AuthCredential type that was used.
+                    const credential = GoogleAuthProvider.credentialFromError(error);
+                    // ...
+                });
+
+            }
+/* 
+                axios.get('http://localhost:3000/usuario?email=' +email + '&senha=' +senha)
 
                 .then(function (response) {
 
@@ -45,7 +116,7 @@ function  Login({ navigation }) {
                     
                     });
 
-            }
+            } */
         
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -62,14 +133,14 @@ function  Login({ navigation }) {
             marginVertical: 15,
         }} 
         onChangeText={text => setEmail(text)}
-        value={getEmail} />
+        value={email} />
     <Text>senha</Text>
     <Input 
         containerStyle={{
             marginVertical: 15,
         }} 
         onChangeText={text => setSenha(text)}
-        value={getSenha} />
+        value={senha} />
        
     <Button
         title= "Login"
@@ -102,6 +173,16 @@ function  Login({ navigation }) {
         }}
         
     />
+
+            <Icon
+            raised    
+            name='g-translate'
+            //type='evilicon'
+            color='#00aced'
+            
+            onPress={() =>logarGoogle()} /> 
+              
+
 
    
         </View>
